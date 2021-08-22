@@ -1,3 +1,5 @@
+import ProgressBar from './ProgressBar'
+
 function Profile() {
 
 // this takes two dates in DD/MM/YYYY format and provides the date difference between them
@@ -10,17 +12,20 @@ function dateDiffInDays(a, b) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
     const user = {
-        name:"Primo",
-        bDay:new Date('09/09/2021').toLocaleString()
+        name:"Miles",
+        bDay:new Date('02/05/2022').toLocaleString()
     }
     // const bDay = new Date('09/09/2021').toLocaleString()
     const today = new Date()
+    const difference = dateDiffInDays(today,user.bDay)
+    const percentage = Math.round((difference/365) * 100)
 
     return (
         <div>
             <h2>PROFILE</h2>
             Hello, {user.name}! <br/>
-            Your next birthday {dateDiffInDays(today,user.bDay)} is days away!
+            Your next birthday {difference} is days away!<br/>
+            <ProgressBar height={'100%'} bgcolor={'red'} progress={percentage}/>
 
         </div>
     )
