@@ -15,10 +15,10 @@ function App() {
   .then(data => console.log(data))
 
   //this day API
-  fetch('http://history.muffinlabs.com/date/2/5')
-  .then(resp => resp.json())
-  .then(data => console.log(data))
-  
+  // fetch('http://history.muffinlabs.com/date/2/5')
+  // .then(resp => resp.json())
+  // .then(data => console.log(data))
+
   return (
     <div className="App">
       <Navbar/>

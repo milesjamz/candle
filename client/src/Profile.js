@@ -18,7 +18,8 @@ function dateDiffInDays(a, b) {
 
     const user = {
         name:"Miles",
-        bDay:new Date('2/5/2022').toLocaleString()
+        bDay:new Date('8/31/2021').toLocaleString(),
+        altBday:new Date('9/21/1985')
     }
     // const bDay = new Date('09/09/2021').toLocaleString()
     const today = new Date()
@@ -26,8 +27,13 @@ function dateDiffInDays(a, b) {
 
     //calc percentage of biological year to power the progress bar
     const percentage = Math.round((difference/365) * 100)
-    console.log(user)
 
+    const cleanBday = [user.altBday.getMonth()+1, user.altBday.getDate(), user.altBday.getFullYear()]
+    const cleanToday = [today.getMonth()+1, today.getDate(), today.getFullYear()]
+    console.log(cleanBday, cleanToday)
+
+    // finds my age - the days aren't working
+    const myAge = cleanToday[0] > cleanBday[0] ? (cleanToday[2] - cleanBday[2]) : cleanToday[1] >= cleanBday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
     //calc the zodiac
 
     function zodiac(day, month){
@@ -41,6 +47,7 @@ function dateDiffInDays(a, b) {
         <div>
             <h2>PROFILE</h2>
             Hello, {user.name}! <br/>
+            You are {myAge} years old.<br/>
             Your next birthday, {user.bDay} is {difference} days away!<br/>
             Your birthstone is {birthstones[user.bDay.split('/')[0]-1]}<br/>
             Your zodiac sign is {zodiac(user.bDay.split('/')[1],user.bDay.split('/')[0] )}<br/>
