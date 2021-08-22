@@ -19,3 +19,9 @@
   background-clip: text;
   color: transparent;
 }
+
+.navbar {
+  background-image: linear-gradient(to left,yellow, orange, red);
+  background-color:black;
+  color:black;
+}
