@@ -2,11 +2,18 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const PORT = 8080;
+const data = require('./fakeapi')
 
 
 app.use(cors());
 app.use(express.json());
 
+
+app.get('/', (req,res) => {
+    res.send({
+        data
+    })
+})
 
 app.get('/user/:id', (req, res) => {
     const {id} = req.params;

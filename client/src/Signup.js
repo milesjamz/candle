@@ -11,7 +11,7 @@ function Signup() {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        alert(`Submitting ${user}`)
+        alert(`Submitting ${user.name}`)
     }
 
     return (
