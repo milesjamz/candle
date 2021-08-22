@@ -19,7 +19,7 @@ function dateDiffInDays(a, b) {
     const user = {
         name:"Miles",
         bDay:new Date('8/31/2021').toLocaleString(),
-        altBday:new Date('9/21/1985')
+        altBday:new Date('2/5/1985')
     }
     // const bDay = new Date('09/09/2021').toLocaleString()
     const today = new Date()
@@ -49,8 +49,8 @@ function dateDiffInDays(a, b) {
             Hello, {user.name}! <br/>
             You are {myAge} years old.<br/>
             Your next birthday, {user.bDay} is {difference} days away!<br/>
-            Your birthstone is {birthstones[user.bDay.split('/')[0]-1]}<br/>
-            Your zodiac sign is {zodiac(user.bDay.split('/')[1],user.bDay.split('/')[0] )}<br/>
+            Your birthstone is {birthstones[cleanBday[0]-1]}<br/>
+            Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/>
             Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/>
 
         </div>
