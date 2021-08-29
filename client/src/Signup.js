@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function Signup() {
 
     const [user, setUser] = useState({
-        name:'',
+        username:'',
         password:'',
         email:'',
         birthday:''
@@ -12,9 +12,13 @@ function Signup() {
     const handleSubmit = evt => {
         evt.preventDefault();
         console.log(user)
-        fetch(`http://localhost:3000`, {
-            method: 'post',
-            body: JSON.stringify(user)
+        fetch(`http://localhost:3000/api/v1/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+              },
+            body: JSON.stringify({user: user})
         })
         .then(resp => resp.json())
         .then(json => console.log(json))
@@ -28,9 +32,9 @@ function Signup() {
             <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name:</label>
                     <input type='text' 
-                    value={user.name} 
-                    name="name"
-                    onChange={e => setUser({ ...user, name: e.target.value}) }/><br/>
+                    value={user.username} 
+                    name="username"
+                    onChange={e => setUser({ ...user, username: e.target.value}) }/><br/>
             <label htmlFor="password">Password:</label>
                     <input type='password'
                     value={user.password} 
