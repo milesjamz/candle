@@ -33,14 +33,14 @@ const logIn = (user) => {
 
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar user={settings.currentUser} />
       <header className="App-header">
 <h1 className="candleTitle">CANDLE</h1>
 It is currently {thedate.toDateString()}<br />
 You are {settings.currentUser ? settings.currentUser.username : 'not in'}, and are {settings.loggedIn ? 'Logged In' : 'Not Logged In'}
-<Login login={logIn}/>
-<Signup/>
-<Profile user={settings.currentUser} />
+{!settings.loggedIn ? <Login login={logIn} />: null}
+{!settings.loggedIn ? <Signup login={logIn} /> : null}
+{settings.loggedIn ? <Profile user={settings.currentUser} /> : null }
       </header>
     </div>
   );

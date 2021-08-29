@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Signup() {
+function Signup(props) {
 
     const [user, setUser] = useState({
         username:'',
@@ -23,6 +23,7 @@ function Signup() {
         .then(resp => resp.json())
         .then(json => console.log(json))
         .catch(err => console.log(err))
+       
         // alert(`Submitting ${user.name}`)
     }
 

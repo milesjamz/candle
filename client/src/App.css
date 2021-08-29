@@ -28,3 +28,9 @@
   top:0;
   width:100%;
 }
+
+.avatar {
+  position:fixed;
+  right:0;
+  color:blue;
+}
