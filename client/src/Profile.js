@@ -1,9 +1,11 @@
 import ProgressBar from './ProgressBar'
+import UserList from './UserList'
 
 function Profile(props) {
 
-
+const monthcolors = ['#bc2a95','#8d2095','#5d1793','#1653ca','#4db1c0','#409629','#7fc73d','#fffe54','#f9cd46','#f29d38','#f16e2e','#ee3421']
 const birthstones = ["Garnet","Amethyst","Bloodstone","Diamond","Emerald","Pearl","Ruby","Sardonyx","Sapphire","Opal","Topaz","Turqoise"]
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
 // this takes two dates in DD/MM/YYYY format and provides the date difference between them
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -16,19 +18,10 @@ function dateDiffInDays(a, b) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
 
-    // const user = {
-    //     name:"Miles",
-    //     bDay:new Date('8/31/2021').toLocaleString(),
-    //     altBday:new Date('2/5/1985')
-    // }
-    const bDay = new Date('09/09/2021').toLocaleString()
-    
-    
-
-  //this day API
-  // fetch('http://history.muffinlabs.com/date/2/5')
-  // .then(resp => resp.json())
-  // .then(data => console.log(data))
+//   this day API
+//   fetch(`http://history.muffinlabs.com/date/${props.user.birthday.split('-')[1]}/${props.user.birthday.split('-')[2]}`)
+//   .then(resp => resp.json())
+//   .then(data => console.log(data))
 
     const today = new Date()
 
@@ -43,6 +36,7 @@ function dateDiffInDays(a, b) {
     const nextBirthday = cleanBday[0] < cleanToday[0] || cleanBday[0] == cleanToday[0] && cleanBday[1] <= cleanToday[1] ? [cleanBday[0],cleanBday[1],cleanToday[2]+1] : [cleanBday[0],cleanBday[1],cleanToday[2]]
     const difference = dateDiffInDays(today,nextBirthday)
 
+    const dayOfWeek = days[new Date(cleanBday.join('-')).getDay()]
 
     //calc percentage of biological year to power the progress bar
     const percentage = 100 - Math.round((difference/365) * 100)
@@ -55,16 +49,32 @@ function dateDiffInDays(a, b) {
         var last_day =['', 19, 18, 20, 20, 21, 21, 22, 22, 21, 22, 21, 20, 19];
         return (day > last_day[month]) ? zodiac[month*1 + 1] : zodiac[month];
        }
+//adds suffix to ages and years
+       function ordinal(number) {
+        const english_ordinal_rules = new Intl.PluralRules("en", {
+            type: "ordinal"
+        });
+        const suffixes = {
+            one: "st",
+            two: "nd",
+            few: "rd",
+            other: "th"
+        }
+        const suffix = suffixes[english_ordinal_rules.select(number)];
+        return (number + suffix);
+    }
 
     return (
         <div>
             <h2>PROFILE</h2>
             Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
             You are {props.user ? myAge : 'loading'} years old.<br/> 
-            Your next birthday, {props.user.birthday ? nextBirthday.join('-') : 'loading'} is {difference} days away!<br/>
-            Your birthstone is {birthstones[cleanBday[0]-1]}<br/>
-            Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/>
-            Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/>
+            You were born on a {dayOfWeek}. <br />
+            Your next birthday, {props.user.birthday ? nextBirthday.join('/') : 'loading'}, is {difference} days away.<br/>
+            Your birthstone is {birthstones[cleanBday[0]-1]}.<br/>
+            Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}.<br/>
+            Amount of your {ordinal(myAge)} year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/><br />
+            <UserList currentUser={props.user} />
         </div>
     )
 }
