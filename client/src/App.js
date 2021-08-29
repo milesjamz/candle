@@ -9,10 +9,10 @@ function App() {
   const thedate = new Date()
 
   //grabbing from API
-  console.log(thedate)
-  fetch('http://localhost:8080')
-  .then(resp => resp.json())
-  .then(data => console.log(data))
+  // console.log(thedate)
+  // fetch('http://localhost:8080')
+  // .then(resp => resp.json())
+  // .then(data => console.log(data))
 
   //this day API
   // fetch('http://history.muffinlabs.com/date/2/5')
