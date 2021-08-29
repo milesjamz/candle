@@ -31,8 +31,8 @@ function dateDiffInDays(a, b) {
     const cleanToday = [today.getMonth()+1, today.getDate(), today.getFullYear()]
     console.log(cleanBday, cleanToday)
 
-    // finds my age - the days aren't working
-    const myAge = cleanToday[0] > cleanBday[0] ? (cleanToday[2] - cleanBday[2]) : cleanToday[1] >= cleanBday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
+    // finds my age
+    const myAge = cleanBday[0] < cleanToday[0] || cleanBday[0] == cleanToday[0] && cleanBday[1] <= cleanToday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
    
    //find next bday
     const nextBirthday = cleanBday[0] < cleanToday[0] || cleanBday[0] == cleanToday[0] && cleanBday[1] <= cleanToday[1] ? [cleanBday[0],cleanBday[1],cleanToday[2]+1] : [cleanBday[0],cleanBday[1],cleanToday[2]]
@@ -56,10 +56,10 @@ function dateDiffInDays(a, b) {
             <h2>PROFILE</h2>
             Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
             You are {props.user ? myAge : 'loading'} years old.<br/> 
-            Your next birthday, {props.user.bDay ? 'who' : 'knows'} is {difference} days away!<br/>
+            Your next birthday, {props.user.birthday ? nextBirthday.join('-') : 'loading'} is {difference} days away!<br/>
             Your birthstone is {birthstones[cleanBday[0]-1]}<br/>
             Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/>
-            Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/> */}
+            Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/>
 
         </div>
     )
