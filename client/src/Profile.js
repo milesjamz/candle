@@ -25,6 +25,11 @@ function dateDiffInDays(a, b) {
     
     
 
+  //this day API
+  // fetch('http://history.muffinlabs.com/date/2/5')
+  // .then(resp => resp.json())
+  // .then(data => console.log(data))
+
     const today = new Date()
 
     const cleanBday = props.user.birthday ? [parseInt(props.user.birthday.split('-')[1],10), parseInt(props.user.birthday.split('-')[2],10), parseInt(props.user.birthday.split('-')[0],10)] : 'nothing'

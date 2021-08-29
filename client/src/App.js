@@ -5,7 +5,6 @@ import Signup from './Signup';
 import Profile from './Profile';
 import React, { useState } from "react";
 
-
 function App() {
 
   const thedate = new Date()
@@ -15,20 +14,13 @@ function App() {
     currentUser:''
 });
 
-  //grabbing from API
-  // console.log(thedate)
-  // fetch('http://localhost:8080')
-  // .then(resp => resp.json())
-  // .then(data => console.log(data))
-
-  //this day API
-  // fetch('http://history.muffinlabs.com/date/2/5')
-  // .then(resp => resp.json())
-  // .then(data => console.log(data))
-
 const logIn = (user) => {
   console.log(user)
     setSettings({ ...settings, loggedIn:true, currentUser:user})
+}
+
+const logOut = () => {
+  setSettings({ ...settings, loggedIn:false, currentUser:''})
 }
 
   return (
@@ -41,6 +33,7 @@ You are {settings.currentUser ? settings.currentUser.username : 'not in'}, and a
 {!settings.loggedIn ? <Login login={logIn} />: null}
 {!settings.loggedIn ? <Signup login={logIn} /> : null}
 {settings.loggedIn ? <Profile user={settings.currentUser} /> : null }
+{settings.loggedIn ? <button onClick={logOut}>Sign Out</button> : null }
       </header>
     </div>
   );
