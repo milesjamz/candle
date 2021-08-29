@@ -24,4 +24,7 @@
   background-image: linear-gradient(to left,yellow, orange, red);
   background-color:black;
   color:black;
+  position:fixed;
+  top:0;
+  width:100%;
 }

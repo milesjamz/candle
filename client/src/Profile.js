@@ -40,7 +40,7 @@ function dateDiffInDays(a, b) {
 
 
     //calc percentage of biological year to power the progress bar
-    const percentage = Math.round((difference/365) * 100)
+    const percentage = 100 - Math.round((difference/365) * 100)
 
    
     //calc the zodiac
@@ -60,7 +60,6 @@ function dateDiffInDays(a, b) {
             Your birthstone is {birthstones[cleanBday[0]-1]}<br/>
             Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/>
             Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/>
-
         </div>
     )
 }
