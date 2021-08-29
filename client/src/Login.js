@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-function Login() {
+function Login(props) {
 
     const [user, setUser] = useState({
-        email:'',
+        username:'',
         password:'',
     });
 
@@ -19,6 +19,7 @@ function Login() {
                 .then(res => res.json())
                 .then(profileData => {
                     console.log(profileData)
+                    props.login(profileData.user)
                 //   this.setState({
                 //     current_user: profileData.user,
                 //     logged_in: true
@@ -32,7 +33,7 @@ function Login() {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        alert(`Submitting ${user.email}`)
+        alert(`Submitting ${user.username}`)
         console.log(user)
             // --- logs in the user ---
                 fetch("http://localhost:3000/api/v1/login", {
@@ -61,11 +62,11 @@ function Login() {
         <div>
             <h2>LOG IN</h2>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-                <input type="email"
-                       value={user.email}
-                       name="email"
-                       onChange={e => setUser({ ...user, email: e.target.value}) }
+            <label htmlFor="username">username:</label>
+                <input type="username"
+                       value={user.username}
+                       name="username"
+                       onChange={e => setUser({ ...user, username: e.target.value}) }
                        />
                        
                        <br/>

@@ -1,6 +1,6 @@
 import ProgressBar from './ProgressBar'
 
-function Profile() {
+function Profile(props) {
 
 
 const birthstones = ["Garnet","Amethyst","Bloodstone","Diamond","Emerald","Pearl","Ruby","Sardonyx","Sapphire","Opal","Topaz","Turqoise"]
@@ -20,20 +20,25 @@ function dateDiffInDays(a, b) {
         name:"Miles",
         bDay:new Date('8/31/2021').toLocaleString(),
         altBday:new Date('2/5/1985')
-    }
-    // const bDay = new Date('09/09/2021').toLocaleString()
+    }    
+    
+
     const today = new Date()
     const difference = dateDiffInDays(today,user.bDay)
+
 
     //calc percentage of biological year to power the progress bar
     const percentage = Math.round((difference/365) * 100)
 
-    const cleanBday = [user.altBday.getMonth()+1, user.altBday.getDate(), user.altBday.getFullYear()]
+    // const cleanBday = () => {
+    //     !props.user.birthday ? '01/01/2001' : 'damn'
+    // }
+
     const cleanToday = [today.getMonth()+1, today.getDate(), today.getFullYear()]
-    console.log(cleanBday, cleanToday)
+    // console.log(cleanBday, cleanToday)
 
     // finds my age - the days aren't working
-    const myAge = cleanToday[0] > cleanBday[0] ? (cleanToday[2] - cleanBday[2]) : cleanToday[1] >= cleanBday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
+    // const myAge = cleanToday[0] > cleanBday[0] ? (cleanToday[2] - cleanBday[2]) : cleanToday[1] >= cleanBday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
     //calc the zodiac
 
     function zodiac(day, month){
@@ -46,11 +51,11 @@ function dateDiffInDays(a, b) {
     return (
         <div>
             <h2>PROFILE</h2>
-            Hello, {user.name}! <br/>
-            You are {myAge} years old.<br/>
-            Your next birthday, {user.bDay} is {difference} days away!<br/>
-            Your birthstone is {birthstones[cleanBday[0]-1]}<br/>
-            Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/>
+            Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
+            {/* You are {props.user ? myAge : 'loading'} years old.<br/> */}
+            {/* Your next birthday, {user.bDay} is {difference} days away!<br/> */}
+            {/* Your birthstone is {birthstones[cleanBday[0]-1]}<br/> */}
+            {/* Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/> */}
             Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/>
 
         </div>
