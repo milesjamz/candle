@@ -66,7 +66,7 @@ function dateDiffInDays(a, b) {
 
     return (
         <div>
-            <h2>PROFILE</h2>
+            <h2>{props.user.username}</h2>
             Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
             You are {props.user ? myAge : 'loading'} years old.<br/> 
             You were born on a {dayOfWeek}. <br />

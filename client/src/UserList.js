@@ -10,7 +10,7 @@ function UserList(props) {
     });
 
     const filterUsers = users => {
-        // return users
+        // return users who aren't you!
         return users.filter(user => user.id !== props.currentUser.id )
     }
 
@@ -25,7 +25,7 @@ function UserList(props) {
 
       const makeCards = () => {
         console.log(users.users)
-        return users.users ? users.users.map(user => <li key={user.id}> <UserCard user={user} /> </li>) : null
+        return users.users ? users.users.map(user => <li key={user.id} className={`userCard-${user.birthday.split('-')[1]}` } > <UserCard user={user} /> </li>) : null
       }
 
     return (
