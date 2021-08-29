@@ -16,31 +16,34 @@ function dateDiffInDays(a, b) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
 
-    const user = {
-        name:"Miles",
-        bDay:new Date('8/31/2021').toLocaleString(),
-        altBday:new Date('2/5/1985')
-    }    
+    // const user = {
+    //     name:"Miles",
+    //     bDay:new Date('8/31/2021').toLocaleString(),
+    //     altBday:new Date('2/5/1985')
+    // }
+    const bDay = new Date('09/09/2021').toLocaleString()
+    
     
 
     const today = new Date()
-    const difference = dateDiffInDays(today,user.bDay)
+
+    const cleanBday = props.user.birthday ? [parseInt(props.user.birthday.split('-')[1],10), parseInt(props.user.birthday.split('-')[2],10), parseInt(props.user.birthday.split('-')[0],10)] : 'nothing'
+    const cleanToday = [today.getMonth()+1, today.getDate(), today.getFullYear()]
+    console.log(cleanBday, cleanToday)
+
+    // finds my age - the days aren't working
+    const myAge = cleanToday[0] > cleanBday[0] ? (cleanToday[2] - cleanBday[2]) : cleanToday[1] >= cleanBday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
+   
+   //find next bday
+    const nextBirthday = cleanBday[0] < cleanToday[0] || cleanBday[0] == cleanToday[0] && cleanBday[1] <= cleanToday[1] ? [cleanBday[0],cleanBday[1],cleanToday[2]+1] : [cleanBday[0],cleanBday[1],cleanToday[2]]
+    const difference = dateDiffInDays(today,nextBirthday)
 
 
     //calc percentage of biological year to power the progress bar
     const percentage = Math.round((difference/365) * 100)
 
-    // const cleanBday = () => {
-    //     !props.user.birthday ? '01/01/2001' : 'damn'
-    // }
-
-    const cleanToday = [today.getMonth()+1, today.getDate(), today.getFullYear()]
-    // console.log(cleanBday, cleanToday)
-
-    // finds my age - the days aren't working
-    // const myAge = cleanToday[0] > cleanBday[0] ? (cleanToday[2] - cleanBday[2]) : cleanToday[1] >= cleanBday[1] ? (cleanToday[2] - cleanBday[2]) : (cleanToday[2] - cleanBday[2]) - 1
+   
     //calc the zodiac
-
     function zodiac(day, month){
         // returns the zodiac sign according to day and month ( https://coursesweb.net/ )
         var zodiac =['', 'Capricorn', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn'];
@@ -52,11 +55,11 @@ function dateDiffInDays(a, b) {
         <div>
             <h2>PROFILE</h2>
             Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
-            {/* You are {props.user ? myAge : 'loading'} years old.<br/> */}
-            {/* Your next birthday, {user.bDay} is {difference} days away!<br/> */}
-            {/* Your birthstone is {birthstones[cleanBday[0]-1]}<br/> */}
-            {/* Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/> */}
-            Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/>
+            You are {props.user ? myAge : 'loading'} years old.<br/> 
+            Your next birthday, {props.user.bDay ? 'who' : 'knows'} is {difference} days away!<br/>
+            Your birthstone is {birthstones[cleanBday[0]-1]}<br/>
+            Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}<br/>
+            Amount of current year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/> */}
 
         </div>
     )
