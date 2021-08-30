@@ -1,7 +1,21 @@
 function UserCard(props) {
 
+const addMe = e => {
+    const newFollow = {follower_id:props.currentUser.id,followed_user_id:parseInt(e.target.id,10)}
+    console.log(newFollow)
+    fetch(`http://localhost:3000/api/v1/follows`, {
+        method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                  },
+                  body: JSON.stringify({follow: newFollow})
+                
+    })
+}
+
     return (
-        <div className="usercard">{props.user.username} - {props.user.birthday} <button>Add as Friend</button></div>
+        <div className="usercard">{props.user.username} - {props.user.birthday} <button id={props.user.id} key={props.user.id} onClick={addMe}>Add as Friend</button></div>
     )
 }
 

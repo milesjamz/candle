@@ -1,9 +1,11 @@
 class Api::V1::FollowsController < ApplicationController
 
+  skip_before_action :authorized
+
     def create
         @follow = Follow.create(follow_params)
         if @follow.valid?
-          render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+          render json: @follow, status: :created
         else
           render json: { error: 'failed to create follow' }, status: :unprocessable_entity
         end
