@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index, :show]
+  skip_before_action :authorized, only: [:create, :index, :show, :follow, :unfollow]
 
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -23,6 +23,19 @@ class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
     render json: @users
+  end
+
+  def follow
+    @user = User.find(params[:id])
+    # current_user.following << @user
+    render json: current_user
+    # render json: @user
+  end
+  
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.followed_users.find_by(followee_id: @user.id).destroy
+    render json: @user
   end
 
   private

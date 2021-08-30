@@ -36,8 +36,12 @@ li {
 
 .avatar {
   position:fixed;
-  right:0;
   color:blue;
+}
+
+.avatar:hover {
+  background-color:white;
+  color:gold;
 }
 
 .userCard-01 {

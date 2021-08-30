@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       resources :users
       resources :follows
+      post '/users/:id/follow', to: "users#follow"
+      post '/users/:id/unfollow', to: "users#unfollow"
     end
   end
 end

@@ -94,11 +94,11 @@ useEffect(() => {
             You were born on a {dayOfWeek}. <br />
             Followers:{props.user.followers.length}<br/>
             <ul>
-                {props.user.followers ? props.user.followers.map(follower => <UserCard context={'follower'} user={follower} key={follower.id} />) : null}
+                {props.user.followers ? props.user.followers.map(follower => <UserCard update={props.update} currentUser={props.user} context={'follower'} user={follower} key={follower.id} />) : null}
             </ul>
             Following:{props.user.following.length}<br/>
             <ul>
-            {props.user.following ? props.user.following.map(following => <UserCard context={'following'} user={following} key={following.id} />) : null}
+            {props.user.following ? props.user.following.map(following => <UserCard update={props.update} currentUser={props.user} context={'following'} user={following} key={following.id} />) : null}
             </ul>
             Your next birthday, {props.user.birthday ? nextBirthday.join('/') : 'loading'}, is {difference} days away.<br/>
             Your birthstone is {birthstones[cleanBday[0]-1]}.<br/>
