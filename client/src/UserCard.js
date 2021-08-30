@@ -15,8 +15,9 @@ const addMe = e => {
     props.update()
 }
 
+    console.log(props)
     return (
-        <div className="usercard">{props.user.username} - {props.user.birthday} <button id={props.user.id} key={props.user.id} onClick={addMe}>Add as Friend</button></div>
+        <div className={`userCard-${props.user.birthday.split('-')[1]}` }> {props.user.username} - {props.user.birthday} <button id={props.user.id} key={props.user.id} onClick={addMe}> Add as Friend </button></div>
     )
 }
 
