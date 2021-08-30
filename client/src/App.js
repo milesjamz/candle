@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
+import Landing from './Landing'
 import React, { useEffect, useState } from "react";
 
 function App() {
@@ -29,13 +30,16 @@ const updateCurrentUser = () => {
   .then(response => setSettings({...settings, loggedIn:true, currentUser:response}))
 }
 
+// It is currently {thedate.toDateString()}<br />
+// You are {settings.currentUser ? settings.currentUser.username : 'not in'}, and are {settings.loggedIn ? 'Logged In' : 'Not Logged In'}
+
+
   return (
     <div className="App">
-      <Navbar user={settings.currentUser} />
+      {settings.loggedIn ? <Navbar user={settings.currentUser} /> : null}
       <header className="App-header">
 <h1 className="candleTitle">CANDLE</h1>
-It is currently {thedate.toDateString()}<br />
-You are {settings.currentUser ? settings.currentUser.username : 'not in'}, and are {settings.loggedIn ? 'Logged In' : 'Not Logged In'}
+{!settings.loggedIn ? <Landing  />: null}
 {!settings.loggedIn ? <Login login={logIn} />: null}
 {!settings.loggedIn ? <Signup login={logIn} /> : null}
 {settings.loggedIn ? <Profile update={updateCurrentUser} user={settings.currentUser} /> : null }

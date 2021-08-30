@@ -2,8 +2,36 @@
   text-align: center;
 }
 
-li {
-  list-style: lower-roman;
+button {
+  border:none;
+  /* display:inline-block; */
+  border-radius: 20%;
+  margin:30px;
+}
+
+.landing {
+  background-image:url("birthday.png");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  height:500px;
+  color:rgb(255, 255, 255);
+}
+
+ul {
+  list-style:none;
+  display:inline-flex;
+  /* margin:5; */
+  /* padding:5; */
+}
+.landing-list {
+  /* display:inline; */
+  /* margin:45px; */
+  /* padding:45px; */
+}
+.opaqueText {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 55%;
+  margin-top:-5%;
 }
 
 .App-header {
