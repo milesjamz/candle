@@ -76,15 +76,14 @@ useEffect(() => {
         return (number + suffix);
     }
 
-const makeDropDown = () => {
-    let ages = [...Array(myAge).keys()]
-    console.log(ages)
-    return ages.forEach((age,i) => {
-    console.log(typeof(age),i)
-    return <li key={i}>{i.toString()}</li>
-    })
-    
-}
+// const makeDropDown = () => {
+//     let ages = [...Array(myAge).keys()]
+//     console.log(ages)
+//     return ages.forEach((age,i) => {
+//     console.log(typeof(age),i)
+//     return <li key={i}>{i.toString()}</li>
+//     })
+// }
 
     return (
         <div>
@@ -93,7 +92,13 @@ const makeDropDown = () => {
             You are {props.user ? myAge : 'loading'} years old.<br/> 
             You were born on a {dayOfWeek}. <br />
             Followers:{props.user.followers.length}<br/>
+            <ul>
+                {props.user.followers ? props.user.followers.map(follower => <li key={follower.id}>{follower.username}</li>) : null}
+            </ul>
             Following:{props.user.following.length}<br/>
+            <ul>
+            {props.user.following ? props.user.following.map(following => <li key={following.id}>{following.username}</li>) : null}
+            </ul>
             Your next birthday, {props.user.birthday ? nextBirthday.join('/') : 'loading'}, is {difference} days away.<br/>
             Your birthstone is {birthstones[cleanBday[0]-1]}.<br/>
             Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}.<br/>

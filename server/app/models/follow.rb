@@ -1,4 +1,6 @@
 class Follow < ApplicationRecord
+validates_uniqueness_of :follower_id, scope: :followed_user_id
+
     # The user giving the follow
     belongs_to :follower, foreign_key: :follower_id, class_name: "User"
   

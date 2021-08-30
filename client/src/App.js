@@ -26,7 +26,7 @@ const logOut = () => {
 const updateCurrentUser = () => {
   fetch(`http://localhost:3000/api/v1/users/${settings.currentUser.id}`)
   .then(resp => resp.json())
-  .then(response => setSettings({...settings, currentUser:response}))
+  .then(response => setSettings({...settings, loggedIn:true, currentUser:response}))
 }
 
   return (
