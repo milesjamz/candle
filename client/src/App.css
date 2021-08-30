@@ -27,6 +27,7 @@ li {
 .navbar {
   background-image: linear-gradient(to left,yellow, orange, red);
   background-color:black;
+  background-color: #282c34;
   color:black;
   position:fixed;
   top:0;
@@ -41,37 +42,49 @@ li {
 
 .userCard-01 {
   background-color:#bc2a95;
+  width:45%;
 }
 .userCard-02 {
-  background-color:#8d209d;
+  background-color:#8d459d;
+  width:45%;
 }
 .userCard-03 {
   background-color:#5d1793;
+  width:45%;
 }
 .userCard-04 {
   background-color:#1653ca;
+  width:45%;
 }
 .userCard-05 {
   background-color:#4db1c0;
+  width:45%;
 }
 .userCard-06 {
   background-color:#409629;
+  width:45%;
 }
 .userCard-07 {
   background-color:#7fc73d;
+  width:45%;
 }
 .userCard-08 {
   background-color:#fffe54;
+  width:45%;
 }
 .userCard-09 {
   background-color:#f9cd46;
+  width:45%;
 }
 .userCard-10  {
   background-color:#f29d38;
+  width:45%;
 }
 .userCard-11 {
   background-color:#f16e2e;
+  width:45%;
 }
 .userCard-12 {
   background-color:#ee3421;
+  width:45%;
 }

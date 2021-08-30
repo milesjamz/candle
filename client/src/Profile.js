@@ -1,11 +1,18 @@
+import React, { useEffect, useState } from "react";
 import ProgressBar from './ProgressBar'
 import UserList from './UserList'
+import FactsContainer from './FactsContainer'
 
 function Profile(props) {
 
-const monthcolors = ['#bc2a95','#8d2095','#5d1793','#1653ca','#4db1c0','#409629','#7fc73d','#fffe54','#f9cd46','#f29d38','#f16e2e','#ee3421']
+// const monthcolors = ['#bc2a95','#8d2095','#5d1793','#1653ca','#4db1c0','#409629','#7fc73d','#fffe54','#f9cd46','#f29d38','#f16e2e','#ee3421']
 const birthstones = ["Garnet","Amethyst","Bloodstone","Diamond","Emerald","Pearl","Ruby","Sardonyx","Sapphire","Opal","Topaz","Turqoise"]
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
+const [facts, setFacts] = useState({
+    dayFacts:[],
+    loaded:false
+});
 
 // this takes two dates in DD/MM/YYYY format and provides the date difference between them
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -18,10 +25,14 @@ function dateDiffInDays(a, b) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
 
-//   this day API
-//   fetch(`http://history.muffinlabs.com/date/${props.user.birthday.split('-')[1]}/${props.user.birthday.split('-')[2]}`)
-//   .then(resp => resp.json())
-//   .then(data => console.log(data))
+// //   this day API
+useEffect(() => {
+    if (facts.loaded === false) {
+  fetch(`http://history.muffinlabs.com/date/${props.user.birthday.split('-')[1]}/${props.user.birthday.split('-')[2]}`)
+  .then(resp => resp.json())
+  .then(data => setFacts({dayFacts:data, loaded:true}) )
+    }
+  })
 
     const today = new Date()
 
@@ -73,6 +84,7 @@ function dateDiffInDays(a, b) {
             Your next birthday, {props.user.birthday ? nextBirthday.join('/') : 'loading'}, is {difference} days away.<br/>
             Your birthstone is {birthstones[cleanBday[0]-1]}.<br/>
             Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}.<br/>
+            <FactsContainer facts={facts} />
             Amount of your {ordinal(myAge)} year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/><br />
             <UserList currentUser={props.user} />
         </div>
