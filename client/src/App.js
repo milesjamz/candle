@@ -5,6 +5,13 @@ import Signup from './Signup';
 import Profile from './Profile';
 import Landing from './Landing'
 import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory
+} from "react-router-dom";
 
 function App() {
 
@@ -35,17 +42,29 @@ const updateCurrentUser = () => {
 
 
   return (
+    <Router>
     <div className="App">
       {settings.loggedIn ? <Navbar user={settings.currentUser} /> : null}
       <header className="App-header">
-<h1 className="candleTitle">CANDLE</h1>
-{!settings.loggedIn ? <Landing  />: null}
-{!settings.loggedIn ? <Login login={logIn} />: null}
-{!settings.loggedIn ? <Signup login={logIn} /> : null}
-{settings.loggedIn ? <Profile update={updateCurrentUser} user={settings.currentUser} /> : null }
+<h1 className="candleTitle"><Link to="/">CANDLE</Link></h1>
+<Switch>
+  <Route exact path='/'>
+  {!settings.loggedIn ? <Landing  />: <Profile update={updateCurrentUser} user={settings.currentUser} />}
+  </Route>
+  <Route path='/login'>
+  {!settings.loggedIn ? <Login login={logIn} />: null}
+  </Route>
+  <Route path="/signup">
+  {!settings.loggedIn ? <Signup login={logIn} /> : null}
+  </Route>
+</Switch>
+{/* {!settings.loggedIn ? <Landing  />: null} */}
+{/* {!settings.loggedIn ? <Signup login={logIn} /> : null} */}
+{/* {settings.loggedIn ? <Profile update={updateCurrentUser} user={settings.currentUser} /> : null } */}
 {settings.loggedIn ? <button onClick={logOut}>Sign Out</button> : null }
       </header>
     </div>
+    </Router>
   );
 }
 
