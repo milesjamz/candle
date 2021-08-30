@@ -75,17 +75,33 @@ useEffect(() => {
         return (number + suffix);
     }
 
+const makeDropDown = () => {
+    let ages = [...Array(myAge).keys()]
+    console.log(ages)
+    return ages.forEach((age,i) => {
+    console.log(typeof(age),i)
+    return <li key={i}>{i.toString()}</li>
+    })
+    
+}
+
     return (
         <div>
             <h2>{props.user.username}</h2>
             Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
             You are {props.user ? myAge : 'loading'} years old.<br/> 
             You were born on a {dayOfWeek}. <br />
+            Followers:<br/>
+            Following:<br/>
             Your next birthday, {props.user.birthday ? nextBirthday.join('/') : 'loading'}, is {difference} days away.<br/>
             Your birthstone is {birthstones[cleanBday[0]-1]}.<br/>
             Your zodiac sign is {zodiac(cleanBday[1],cleanBday[0] )}.<br/>
+            Memories:<br/>
+            Add memory:<select>
+                { [...Array(myAge).keys()].map(age => <option key={age}>{age}</option>) }
+                </select><br/>
             <FactsContainer facts={facts} />
-            Amount of your {ordinal(myAge)} year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/><br />
+            Amount of your {ordinal((myAge+1))} year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/><br />
             <UserList currentUser={props.user} />
         </div>
     )
