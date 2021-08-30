@@ -14,8 +14,9 @@ import {
 } from "react-router-dom";
 
 function App() {
+  var history = useHistory();
 
-  const thedate = new Date()
+  // const thedate = new Date()
 
   const [settings, setSettings] = useState({
     loggedIn:false,
@@ -25,6 +26,7 @@ function App() {
 const logIn = (user) => {
   console.log(user)
     setSettings({ ...settings, loggedIn:true, currentUser:user})
+    history.push('/');
 }
 
 const logOut = () => {
@@ -42,7 +44,7 @@ const updateCurrentUser = () => {
 
 
   return (
-    <Router>
+    // <Router>
     <div className="App">
       {settings.loggedIn ? <Navbar user={settings.currentUser} /> : null}
       <header className="App-header">
@@ -64,7 +66,7 @@ const updateCurrentUser = () => {
 {settings.loggedIn ? <button onClick={logOut}>Sign Out</button> : null }
       </header>
     </div>
-    </Router>
+    // </Router>
   );
 }
 

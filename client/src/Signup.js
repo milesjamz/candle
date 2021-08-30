@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Login from "./Login";
 
 function Signup(props) {
 
@@ -23,8 +24,7 @@ function Signup(props) {
         .then(resp => resp.json())
         .then(json => console.log(json))
         .catch(err => console.log(err))
-       
-        // alert(`Submitting ${user.name}`)
+       props.login(user)
     }
 
     return (
