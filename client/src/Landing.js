@@ -11,10 +11,11 @@ function Landing() {
         <div className='landing'>
             <div className='opaqueText'>
             <h2>Keep Track of Moments That Matter</h2>
-            <p>An easy way to organize you and your friends' birthdays, make and record<br/>  memories,and find new friends.</p>
+            <p>An easy way to organize you and your friends' birthdays, make and record
+            memories, and find new friends.</p>
             <ul>
-            <li><Link to='/login'><button>Log In</button></Link></li>
-            <li><Link to='/signup'><button>Sign Up</button></Link></li>
+            <li><Link to='/login'><button className='loginBtn'>Log In</button></Link></li>
+            <li><Link to='/signup'><button className='loginBtn'>Sign Up</button></Link></li>
             </ul>
             </div>
         </div>
