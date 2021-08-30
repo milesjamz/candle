@@ -11,6 +11,7 @@ function Login(props) {
     const getProfileFromServer = () => {
         // --- gets your profile from the server ---
             if (localStorage.token) {
+              console.log('DID THIS WORK')
               fetch("http://localhost:3000/api/v1/profile", {
                 headers: {
                   Authorization: `Bearer ${localStorage.token}`
@@ -20,10 +21,6 @@ function Login(props) {
                 .then(profileData => {
                     console.log(profileData)
                     props.login(profileData.user)
-                //   this.setState({
-                //     current_user: profileData.user,
-                //     logged_in: true
-                //   });
                 });
             }
           };
@@ -33,8 +30,7 @@ function Login(props) {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        alert(`Submitting ${user.username}`)
-        console.log(user)
+        console.log(`submitting ${user}`)
             // --- logs in the user ---
                 fetch("http://localhost:3000/api/v1/login", {
                   method: "POST",
@@ -50,7 +46,7 @@ function Login(props) {
                     if (data.jwt) {
                       localStorage.setItem("token", data.jwt);
                       getProfileFromServer()
-                    console.log('yes')
+                    // console.log('yes')
                     } else {
                       alert("Your info doesn't match our records; please try again.");
                     }

@@ -27,7 +27,7 @@ function UserList(props) {
       })
 
       const makeCards = () => {
-        console.log(users.users)
+        // console.log(users.users)
         return users.users ? users.users.map(user => <li key={user.id} > <UserCard context={'list'} update={props.update} currentUser={props.currentUser} user={user} /> </li>) : null
       }
 

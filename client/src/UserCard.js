@@ -28,7 +28,7 @@ const deleteMe = e => {
 }
 
 const myButton = () => {
-console.log(props)
+// console.log(props)
 if (props.context === 'list' || props.context === 'follower') {
 return <button id={props.user.id} key={props.user.id} onClick={addMe}> Add as Friend </button>
 } else {

@@ -92,7 +92,7 @@ useEffect(() => {
             Hello, {props.user.username ? props.user.username : 'nobody'}! <br/>
             You are {props.user ? myAge : 'loading'} years old.<br/> 
             You were born on a {dayOfWeek}. <br />
-            Followers:{props.user.followers.length}<br/>
+            Followers:{props.user.followers ? props.user.followers.length : null}<br/>
             <ul>
                 {props.user.followers ? props.user.followers.map(follower => <UserCard update={props.update} currentUser={props.user} context={'follower'} user={follower} key={follower.id} />) : null}
             </ul>
