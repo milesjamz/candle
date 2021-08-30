@@ -23,6 +23,12 @@ const logOut = () => {
   setSettings({ ...settings, loggedIn:false, currentUser:''})
 }
 
+const updateCurrentUser = () => {
+  fetch(`http://localhost:3000/api/v1/users/${settings.currentUser.id}`)
+  .then(resp => resp.json())
+  .then(response => setSettings({...settings, currentUser:response}))
+}
+
   return (
     <div className="App">
       <Navbar user={settings.currentUser} />
@@ -32,7 +38,7 @@ It is currently {thedate.toDateString()}<br />
 You are {settings.currentUser ? settings.currentUser.username : 'not in'}, and are {settings.loggedIn ? 'Logged In' : 'Not Logged In'}
 {!settings.loggedIn ? <Login login={logIn} />: null}
 {!settings.loggedIn ? <Signup login={logIn} /> : null}
-{settings.loggedIn ? <Profile user={settings.currentUser} /> : null }
+{settings.loggedIn ? <Profile update={updateCurrentUser} user={settings.currentUser} /> : null }
 {settings.loggedIn ? <button onClick={logOut}>Sign Out</button> : null }
       </header>
     </div>

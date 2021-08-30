@@ -25,7 +25,7 @@ function UserList(props) {
 
       const makeCards = () => {
         console.log(users.users)
-        return users.users ? users.users.map(user => <li key={user.id} className={`userCard-${user.birthday.split('-')[1]}` } > <UserCard currentUser={props.currentUser} user={user} /> </li>) : null
+        return users.users ? users.users.map(user => <li key={user.id} className={`userCard-${user.birthday.split('-')[1]}` } > <UserCard update={props.update} currentUser={props.currentUser} user={user} /> </li>) : null
       }
 
     return (

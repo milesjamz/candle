@@ -12,6 +12,7 @@ const addMe = e => {
                   body: JSON.stringify({follow: newFollow})
                 
     })
+    props.update()
 }
 
     return (

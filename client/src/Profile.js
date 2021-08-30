@@ -60,6 +60,7 @@ useEffect(() => {
         var last_day =['', 19, 18, 20, 20, 21, 21, 22, 22, 21, 22, 21, 20, 19];
         return (day > last_day[month]) ? zodiac[month*1 + 1] : zodiac[month];
        }
+       
 //adds suffix to ages and years
        function ordinal(number) {
         const english_ordinal_rules = new Intl.PluralRules("en", {
@@ -102,7 +103,7 @@ const makeDropDown = () => {
                 </select><br/>
             <FactsContainer facts={facts} />
             Amount of your {ordinal((myAge+1))} year finished:<ProgressBar height={'40%'} bgcolor={'red'} progress={percentage}/><br />
-            <UserList currentUser={props.user} />
+            <UserList update={props.update} currentUser={props.user} />
         </div>
     )
 }
