@@ -32,7 +32,7 @@ a {
 
 ul {
   list-style:none;
-  display:inline-flex;
+  display:grid;
   /* margin:5; */
   /* padding:5; */
 }
@@ -50,7 +50,7 @@ ul {
 .opaqueText {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 55%;
-  margin-top:4%;
+  margin-top:0%;
   padding:10%;
   max-width:850px;
 }
@@ -58,6 +58,8 @@ ul {
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
+  min-width: 100vw;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,49 +97,73 @@ ul {
 
 .userCard-01 {
   background-color:#bc2a95;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-02 {
   background-color:#8d459d;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-03 {
   background-color:#5d1793;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-04 {
   background-color:#1653ca;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-05 {
   background-color:#4db1c0;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-06 {
   background-color:#409629;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-07 {
   background-color:#7fc73d;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-08 {
   background-color:#fffe54;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-09 {
   background-color:#f9cd46;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-10  {
   background-color:#f29d38;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-11 {
   background-color:#f16e2e;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
 .userCard-12 {
   background-color:#ee3421;
-  width:45%;
+  width:50%;
+  height:200px;
+  display: inline-flex;
 }
