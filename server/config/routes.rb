@@ -4,10 +4,20 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
-      resources :users
-      resources :follows
-      post '/users/:id/follow', to: "users#follow"
-      post '/users/:id/unfollow', to: "users#unfollow"
+      resources :users do 
+        member do
+          post 'follow'
+          post 'unfollow'
+        end
+        collection do
+          get :search
+        end
+      end
+
+
+    #   resources :follows
+    #   post '/users/:id/follow', to: "users#follow"
+    #   post '/users/:id/unfollow', to: "users#unfollow"
     end
   end
 end
