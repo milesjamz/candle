@@ -32,7 +32,7 @@ a {
 
 ul {
   list-style:none;
-  display:grid;
+  display:inline-flex;
   /* margin:5; */
   /* padding:5; */
 }
